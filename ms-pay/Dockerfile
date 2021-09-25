@@ -1,4 +1,4 @@
 FROM openjdk:13
-EXPOSE 8010
-ADD ./target/ms-security-0.0.1-SNAPSHOT.jar    micro-security.jar
-ENTRYPOINT ["java","-jar","/micro-security.jar"]
+EXPOSE 8082
+ADD ./target/ms-pay-0.0.1-SNAPSHOT.jar ms-pay.jar
+ENTRYPOINT ["java","-jar","/ms-pay.jar"]
