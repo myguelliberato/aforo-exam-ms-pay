@@ -1,5 +1,7 @@
 package com.aforo255.exam.controller;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
@@ -29,6 +31,7 @@ public class PayController {
 	@PostMapping("/v1/save")
 	public ResponseEntity<Operacion> save(@RequestBody Operacion request) throws JsonProcessingException {
 		log.info("INICIO:::::save");
+		request.setDate(LocalDateTime.now());
 		Operacion operacion = payService.save(request);
 		log.info("FIN SAVE TX:::: INICIO::: KAFKA:::::");
 		payEventProducer.sendPayEvent(operacion);
